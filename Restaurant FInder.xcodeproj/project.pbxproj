@@ -17,6 +17,9 @@
 		8926703B26B8252D009B5666 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8926703A26B8252D009B5666 /* RestaurantView.swift */; };
 		895A8D6126B7F03D00785B55 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895A8D6026B7F03D00785B55 /* HomeScreen.swift */; };
 		8985BCF226BB52560026E613 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8985BCF126BB52560026E613 /* MapView.swift */; };
+		89CD57F226BD41E8003ED321 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 89CD57F126BD41E8003ED321 /* .gitignore */; };
+		89CD57F426BD6EFC003ED321 /* YelpRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CD57F326BD6EFC003ED321 /* YelpRating.swift */; };
+		89CD57F926BD7C14003ED321 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 89CD57F826BD7C14003ED321 /* BetterSafariView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,8 @@
 		895A8D5F26B7ED3900785B55 /* Restaurant-Finder-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Restaurant-Finder-Info.plist"; sourceTree = "<group>"; };
 		895A8D6026B7F03D00785B55 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		8985BCF126BB52560026E613 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		89CD57F126BD41E8003ED321 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
+		89CD57F326BD6EFC003ED321 /* YelpRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpRating.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +45,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8926703626B7F5F3009B5666 /* Alamofire in Frameworks */,
+				89CD57F926BD7C14003ED321 /* BetterSafariView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +62,7 @@
 		892165A426B74DE6004374A1 = {
 			isa = PBXGroup;
 			children = (
+				89CD57F126BD41E8003ED321 /* .gitignore */,
 				8926703926B8186B009B5666 /* Config.xcconfig */,
 				895A8D5F26B7ED3900785B55 /* Restaurant-Finder-Info.plist */,
 				892165AF26B74DE6004374A1 /* Restaurant Finder */,
@@ -108,6 +115,7 @@
 			children = (
 				892165C326B75163004374A1 /* YelpBusiness.swift */,
 				8926703726B8172C009B5666 /* YelpParams.swift */,
+				89CD57F326BD6EFC003ED321 /* YelpRating.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -130,6 +138,7 @@
 			name = "Restaurant Finder";
 			packageProductDependencies = (
 				8926703526B7F5F3009B5666 /* Alamofire */,
+				89CD57F826BD7C14003ED321 /* BetterSafariView */,
 			);
 			productName = "Restaurant FInder";
 			productReference = 892165AD26B74DE6004374A1 /* Restaurant Finder.app */;
@@ -161,6 +170,7 @@
 			mainGroup = 892165A426B74DE6004374A1;
 			packageReferences = (
 				8926703426B7F5F3009B5666 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				89CD57F726BD7C14003ED321 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
 			);
 			productRefGroup = 892165AE26B74DE6004374A1 /* Products */;
 			projectDirPath = "";
@@ -177,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				892165B826B74DE8004374A1 /* Preview Assets.xcassets in Resources */,
+				89CD57F226BD41E8003ED321 /* .gitignore in Resources */,
 				892165B526B74DE8004374A1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,6 +201,7 @@
 			files = (
 				8985BCF226BB52560026E613 /* MapView.swift in Sources */,
 				895A8D6126B7F03D00785B55 /* HomeScreen.swift in Sources */,
+				89CD57F426BD6EFC003ED321 /* YelpRating.swift in Sources */,
 				892165C426B75163004374A1 /* YelpBusiness.swift in Sources */,
 				8926703826B8172C009B5666 /* YelpParams.swift in Sources */,
 				892165B326B74DE6004374A1 /* ContentView.swift in Sources */,
@@ -419,6 +431,14 @@
 				minimumVersion = 5.4.0;
 			};
 		};
+		89CD57F726BD7C14003ED321 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stleamist/BetterSafariView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -426,6 +446,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8926703426B7F5F3009B5666 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		89CD57F826BD7C14003ED321 /* BetterSafariView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89CD57F726BD7C14003ED321 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
+			productName = BetterSafariView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
