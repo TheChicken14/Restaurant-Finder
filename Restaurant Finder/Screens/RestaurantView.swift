@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import BetterSafariView
 
 struct RestaurantView: View {
     @Environment(\.dismiss) var dismiss
@@ -14,6 +15,7 @@ struct RestaurantView: View {
     
     @State var mapSheetShown = false
     @State var directionSheetShown = false
+    @State var browserShown = false
     
     var body: some View {
         NavigationView {
@@ -49,16 +51,31 @@ struct RestaurantView: View {
                         Text(restaurant!.categories.map { $0.title }.joined(separator: ", "))
                     }
                     
+                    HStack {
+                        Text("Rating")
+                        Spacer()
+                        VStack {
+                            Image(getRatingImage())
+                            Text(getRatingText())
+                        }
+                        
+                    }
+                    
 //                    Button("Show map") {
 //                        mapSheetShown.toggle()
 //                    }
                     
                     Button("Get directions", action: directionsActionSheet)
                     
-                    HStack {
-                        Link("Open on Yelp", destination: URL(string: restaurant!.url)!)
+//                    Link("Open on Yelp", destination: URL(string: restaurant!.url)!)
+                    Button("Open on Yelp") {
+                        browserShown = true
+                    }.safariView(isPresented: $browserShown) {
+                        SafariView(url: URL(string: restaurant!.url)!)
+                            .preferredBarAccentColor(.clear)
+                            .preferredControlAccentColor(.accentColor)
+                            .dismissButtonStyle(.done)
                     }
-                    
                 }.navigationTitle(Text(restaurant?.name ?? "Unknown")).navigationBarItems(leading: closeButton())
                     .sheet(isPresented: $mapSheetShown) {
                         MapView(latitude: restaurant!.coordinates.latitude, longitude: restaurant!.coordinates.longitude, name: restaurant!.name)
@@ -107,6 +124,17 @@ struct RestaurantView: View {
         mapItem.name = restaurant!.name
 //      mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault])
         mapItem.openInMaps()
+    }
+    
+    func getRatingImage() -> String {
+        let rating = YelpRating(rawValue: restaurant!.rating)
+        return rating?.getImageName() ?? "rating_0"
+    }
+    
+    func getRatingText() -> String {
+        let reviews = restaurant!.reviewCount
+        
+        return "From \(reviews) \(reviews > 1 ? "reviews" : "review")"
     }
 }
 
