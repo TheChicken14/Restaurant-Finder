@@ -23,7 +23,6 @@ struct HomeScreen: View {
     @State var restaurantModalShown = false
     @State private var selectedRestaurant: YelpBusiness?
     
-    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors:[.blue, .white]), startPoint: .topLeading, endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
@@ -36,7 +35,11 @@ struct HomeScreen: View {
                     
                     Spacer()
                     
-                    TextField("Location", text: $locationInputText).focused($locInputFocused).multilineTextAlignment(.trailing).disabled(loading)
+                    TextField("Location", text: $locationInputText).focused($locInputFocused).multilineTextAlignment(.trailing).disabled(loading).onAppear(perform: {
+                        if let locationString = UserDefaults.standard.string(forKey: "location") {
+                            locationInputText = locationString
+                        }
+                    })
                 }.frame(width: 280, height: 50)
                 
                 Button(action: findRestaurant) {
@@ -61,10 +64,18 @@ struct HomeScreen: View {
                     )
                 }
                 .alert(isPresented: $noRestaurantsFoundShown) {
-                    Alert(title: Text("No restaurants found"), message: Text("There were no restaurants find in your area. Please try again later."), dismissButton: .default(Text("OK")))
+                    Alert(
+                        title: Text("No restaurants found"),
+                        message: Text("There were no restaurants find in your area. Please try again later."),
+                        dismissButton: .default(Text("OK"))
+                    )
                 }
                 .alert(isPresented: $networkErrorAlertShown) {
-                    Alert(title: Text("No internet connection"), message: Text("We failed to find a restaurant for you, please check your internet connection and try again later."), dismissButton: .default(Text("OK")))
+                    Alert(
+                        title: Text("No internet connection"),
+                        message: Text("We failed to find a restaurant for you, please check your internet connection and try again later."),
+                        dismissButton: .default(Text("OK"))
+                    )
                 }.alert(isPresented: $noLocationAlertShown) {
                     Alert(title: Text("No location"), message: Text("Please fill in your location so we can find a restaurant for you."), dismissButton: .default(Text("OK")))
                 }
@@ -91,6 +102,7 @@ struct HomeScreen: View {
         if loading {
             return;
         }
+        UserDefaults.standard.set(locationInputText, forKey: "location")
         locInputFocused = false
         
         let impact = UIImpactFeedbackGenerator(style: .heavy)
@@ -117,7 +129,6 @@ struct HomeScreen: View {
                 //                debugPrint(response.result)
                 //                debugPrint(response.value)
                 loading = false
-                
                 switch response.result {
                     
                 case .success(_):
@@ -138,10 +149,10 @@ struct HomeScreen: View {
                     DispatchQueue.main.async {
                         selectedRestaurant = randomRestaurant
                         restaurantModalShown.toggle()
-//                        print(selectedRestaurant?.isClosed)
                     }
+                    
                 case .failure(_):
-                    networkErrorAlertShown = true
+                    networkErrorAlertShown.toggle()
                 }
             }
     }
