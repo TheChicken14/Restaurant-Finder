@@ -12,8 +12,10 @@ struct HomeScreen: View {
     @State var noApiKeyAlertShown = false
     @State var noRestaurantsFoundShown = false
     @State var networkErrorAlertShown = false
-    @State var locationInputAlertShown = false
+    @State var noLocationAlertShown = false
+    
     @State var locationInputText = ""
+    @FocusState private var locInputFocused: Bool
     
     @State var loading = false
     @State var restaurants = [YelpBusiness]()
@@ -27,7 +29,15 @@ struct HomeScreen: View {
             LinearGradient(gradient: Gradient(colors:[.blue, .white]), startPoint: .topLeading, endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
             VStack {
                 Text("Restaurant finder!")
-                    .font(.system(size: 32, weight: .bold, design: .rounded))
+                    .font(.system(size: 32, weight: .bold, design: .rounded)).padding()
+                
+                HStack {
+                    Text("Location").bold()
+                    
+                    Spacer()
+                    
+                    TextField("Location", text: $locationInputText).focused($locInputFocused).multilineTextAlignment(.trailing).disabled(loading)
+                }.frame(width: 280, height: 50)
                 
                 Button(action: findRestaurant) {
                     HStack {
@@ -55,9 +65,8 @@ struct HomeScreen: View {
                 }
                 .alert(isPresented: $networkErrorAlertShown) {
                     Alert(title: Text("No internet connection"), message: Text("We failed to find a restaurant for you, please check your internet connection and try again later."), dismissButton: .default(Text("OK")))
-                }
-                .alert(isPresented: $locationInputAlertShown) {
-                    Alert
+                }.alert(isPresented: $noLocationAlertShown) {
+                    Alert(title: Text("No location"), message: Text("Please fill in your location so we can find a restaurant for you."), dismissButton: .default(Text("OK")))
                 }
             }
         }.sheet(isPresented: $restaurantModalShown) {
@@ -74,9 +83,15 @@ struct HomeScreen: View {
     }
     
     func findRestaurant() {
+        if locationInputText.trimmingCharacters(in: .whitespaces).count == 0 {
+            noLocationAlertShown = true
+            return;
+        }
+        
         if loading {
             return;
         }
+        locInputFocused = false
         
         let impact = UIImpactFeedbackGenerator(style: .heavy)
         impact.impactOccurred()
@@ -94,7 +109,7 @@ struct HomeScreen: View {
             "Authorization": "Bearer \(apiKey)"
         ]
         
-        let parameters = YelpParams(location: "3451ZR", categories: "restaurants")
+        let parameters = YelpParams(location: locationInputText, categories: "restaurants")
         
         AF.request("https://api.yelp.com/v3/businesses/search", parameters: parameters, headers: headers)
             .validate()
@@ -106,6 +121,11 @@ struct HomeScreen: View {
                 switch response.result {
                     
                 case .success(_):
+                    if response.value?.total == 0 {
+                        noRestaurantsFoundShown = true
+                        return;
+                    }
+                    
                     restaurants = response.value?.businesses ?? []
                     
                     guard let randomRestaurant = response.value?.businesses.randomElement() else {
