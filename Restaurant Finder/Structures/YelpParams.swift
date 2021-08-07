@@ -11,4 +11,5 @@ struct YelpParams: Encodable {
     var location: String
     var categories: String
     var term: String? = nil
+    var locale: String? = nil
 }
