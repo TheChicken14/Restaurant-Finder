@@ -1,0 +1,70 @@
+/* 
+  Localizable.strings
+  Restaurant Finder
+
+  Created by Wisse Hes on 07/08/2021.
+  
+*/
+
+// MARK: General words/sentences
+"ok" = "OK";
+"yes" = "Yes";
+"no" = "No";
+
+"close" = "Close";
+
+// MARK: Homescreen labels & buttons
+"app-name" = "Restaurant finder!";
+
+"location" = "Location";
+
+"search-type" = "Search type";
+"random" = "Random";
+"with-search-term" = "With search term";
+
+"search-term" = "Search term";
+
+"find-restaurants" = "Find restaurants";
+
+// MARK: Restaurant details labels & buttons
+"open" = "Open";
+
+"category" = "Category";
+"categories" = "Categories";
+
+"rating" = "Rating";
+
+"review" = "review";
+"reviews" = "reviews";
+
+//"review-count %lld" = "From %lld review";
+
+"get-directions" = "Get directions";
+
+"open-on-yelp" = "Open on Yelp";
+
+// MARK: - Directions actionsheet
+"directions" = "Directions";
+
+"which-app" = "Which app would you like to use for directions?";
+
+"google-maps" = "Google Maps";
+"apple-maps" = "Apple Maps";
+
+// MARK: Alerts
+
+// MARK: - No api key found
+"no-api-key-title" = "No API key";
+"no-api-key-message" = "No API key was found! Sorry for the inconvenience.";
+
+// MARK: - No restuarants found
+"no-restaurants-title" = "No restaurants found";
+"no-restaurants-message" = "There were no restaurants find in your area. Please try again later.";
+
+// MARK: - No internet connection
+"no-internet-title" = "No internet connection";
+"no-internet-message" = "We failed to find a restaurant for you, please check your internet connection and try again later.";
+
+// MARK: - No location
+"no-location-title" = "No location";
+"no-location-message" = "Please fill in your location so we can find a restaurant for you.";
