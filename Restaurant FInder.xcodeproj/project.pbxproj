@@ -17,6 +17,7 @@
 		8926703B26B8252D009B5666 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8926703A26B8252D009B5666 /* RestaurantView.swift */; };
 		895A8D6126B7F03D00785B55 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895A8D6026B7F03D00785B55 /* HomeScreen.swift */; };
 		8985BCF226BB52560026E613 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8985BCF126BB52560026E613 /* MapView.swift */; };
+		89C3397926BF0BAB000EF678 /* SearchParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C3397826BF0BAB000EF678 /* SearchParam.swift */; };
 		89CD57F226BD41E8003ED321 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 89CD57F126BD41E8003ED321 /* .gitignore */; };
 		89CD57F426BD6EFC003ED321 /* YelpRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CD57F326BD6EFC003ED321 /* YelpRating.swift */; };
 		89CD57F926BD7C14003ED321 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 89CD57F826BD7C14003ED321 /* BetterSafariView */; };
@@ -35,6 +36,7 @@
 		895A8D5F26B7ED3900785B55 /* Restaurant-Finder-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Restaurant-Finder-Info.plist"; sourceTree = "<group>"; };
 		895A8D6026B7F03D00785B55 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		8985BCF126BB52560026E613 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		89C3397826BF0BAB000EF678 /* SearchParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchParam.swift; sourceTree = "<group>"; };
 		89CD57F126BD41E8003ED321 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		89CD57F326BD6EFC003ED321 /* YelpRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpRating.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +118,7 @@
 				892165C326B75163004374A1 /* YelpBusiness.swift */,
 				8926703726B8172C009B5666 /* YelpParams.swift */,
 				89CD57F326BD6EFC003ED321 /* YelpRating.swift */,
+				89C3397826BF0BAB000EF678 /* SearchParam.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				892165C426B75163004374A1 /* YelpBusiness.swift in Sources */,
 				8926703826B8172C009B5666 /* YelpParams.swift in Sources */,
 				892165B326B74DE6004374A1 /* ContentView.swift in Sources */,
+				89C3397926BF0BAB000EF678 /* SearchParam.swift in Sources */,
 				892165B126B74DE6004374A1 /* Restaurant_FInderApp.swift in Sources */,
 				8926703B26B8252D009B5666 /* RestaurantView.swift in Sources */,
 			);
