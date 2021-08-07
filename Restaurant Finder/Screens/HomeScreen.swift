@@ -17,6 +17,9 @@ struct HomeScreen: View {
     @State var locationInputText = ""
     @FocusState private var locInputFocused: Bool
     
+    @State var searchType: SearchParam = .withSearchTerm
+    @State var searchTerm = ""
+    
     @State var loading = false
     @State var restaurants = [YelpBusiness]()
     
@@ -31,7 +34,7 @@ struct HomeScreen: View {
                     .font(.system(size: 32, weight: .bold, design: .rounded)).padding()
                 
                 HStack {
-                    Text("Location").bold()
+                    Label("Location", systemImage: "location").font(Font.body.bold())
                     
                     Spacer()
                     
@@ -40,7 +43,25 @@ struct HomeScreen: View {
                             locationInputText = locationString
                         }
                     })
-                }.frame(width: 280, height: 50)
+                }.padding(.bottom).frame(width: 280, height: 50)
+                
+                Text("Search type").bold().frame(maxWidth: 280, alignment: .leading)
+                
+                Picker("Search type", selection: $searchType) {
+                    Text("Random").tag(SearchParam.random)
+                    Text("With search term").tag(SearchParam.withSearchTerm)
+                }.padding(.bottom).pickerStyle(SegmentedPickerStyle()).frame(width: 280)
+                
+                if searchType == .withSearchTerm {
+                    HStack {
+                        Label("Search term", systemImage: "magnifyingglass").font(Font.body.bold())
+                        
+                        Spacer()
+                        
+                        TextField("Search term", text: $searchTerm).multilineTextAlignment(.trailing)
+                    }.frame(width: 280, height: 50)
+
+                }
                 
                 Button(action: findRestaurant) {
                     HStack {
@@ -121,7 +142,12 @@ struct HomeScreen: View {
             "Authorization": "Bearer \(apiKey)"
         ]
         
-        let parameters = YelpParams(location: locationInputText, categories: "restaurants")
+        var parameters = YelpParams(location: locationInputText, categories: "restaurants")
+        
+        if searchType == .withSearchTerm {
+            parameters.term = searchTerm
+        }
+        
         
         AF.request("https://api.yelp.com/v3/businesses/search", parameters: parameters, headers: headers)
             .validate()
