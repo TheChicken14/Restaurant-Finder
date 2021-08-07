@@ -40,23 +40,24 @@ struct RestaurantView: View {
                     }
                     
                     HStack {
-                        Text("Open")
+                        Text("open")
                         Spacer()
-                        Text(restaurant!.isClosed ? "No" : "Yes")
+                        Text(restaurant!.isClosed ? "no" : "yes")
                     }
                     
                     HStack {
-                        Text(restaurant!.categories.count == 1 ? "Category" : "Categories")
+                        Text(restaurant!.categories.count == 1 ? "category" : "categories")
                         Spacer()
                         Text(restaurant!.categories.map { $0.title }.joined(separator: ", "))
                     }
                     
                     HStack {
-                        Text("Rating")
+                        Text("rating")
                         Spacer()
                         VStack {
                             Image(getRatingImage())
-                            Text(getRatingText())
+//                            Text(getRatingText())
+                            Text("review-count \(restaurant!.reviewCount)", tableName: "Plurals")
                         }
                         
                     }
@@ -65,10 +66,10 @@ struct RestaurantView: View {
 //                        mapSheetShown.toggle()
 //                    }
                     
-                    Button("Get directions", action: directionsActionSheet)
+                    Button("get-directions", action: directionsActionSheet)
                     
 //                    Link("Open on Yelp", destination: URL(string: restaurant!.url)!)
-                    Button("Open on Yelp") {
+                    Button("open-on-yelp") {
                         browserShown = true
                     }.safariView(isPresented: $browserShown) {
                         SafariView(url: URL(string: restaurant!.url)!)
@@ -86,13 +87,13 @@ struct RestaurantView: View {
                         let add = restaurant!.location.address1.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
                         let addString = String(describing: add!)
                         
-                        return ActionSheet(title: Text("Directions"), message: Text("Which app would you like to use for directions?"), buttons: [
-                            .default(Text("Google Maps"), action: {
+                        return ActionSheet(title: Text("directions"), message: Text("wich-app"), buttons: [
+                            .default(Text("google-maps"), action: {
                             let url = URL(string: "comgooglemaps://?q=\(addString)&center=\(lat),\(lon)")!
 
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }),
-                            .default(Text("Apple Maps"), action: openInAppleMaps),
+                            .default(Text("apple-maps"), action: openInAppleMaps),
                             .cancel()
                         ])
                     }
@@ -101,7 +102,7 @@ struct RestaurantView: View {
     }
     
     func closeButton() -> some View {
-        Button("Close") {
+        Button("close") {
             dismiss()
         }
     }
