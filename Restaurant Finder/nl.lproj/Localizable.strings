@@ -1,0 +1,70 @@
+/* 
+  Localizable.strings
+  Restaurant Finder
+
+  Created by Wisse Hes on 07/08/2021.
+  
+*/
+
+// MARK: General words/sentences
+"ok" = "Oké";
+"yes" = "Ja";
+"no" = "Nee";
+
+"close" = "Sluiten";
+
+// MARK: Homescreen labels & buttons
+"app-name" = "Restaurant finder!";
+
+"location" = "Locatie";
+
+"search-type" = "Zoektype";
+"random" = "Willekeurig";
+"with-search-term" = "Met zoekterm";
+
+"search-term" = "Zoekterm";
+
+"find-restaurants" = "Vind restaurants";
+
+// MARK: Restaurant details labels & buttons
+"open" = "Open";
+
+"category" = "Categorie";
+"categories" = "Categorieën";
+
+"rating" = "Beoordeling";
+
+"review" = "review";
+"reviews" = "reviews";
+
+//"review-count %lld" = "From %lld review";
+
+"get-directions" = "Routebeschrijving opvragen";
+
+"open-on-yelp" = "Open op Yelp";
+
+// MARK: - Directions actionsheet
+"directions" = "Routebeschrijving";
+
+"which-app" = "Welke app zou je willen gebruiken voor de routebeschrijving?";
+
+"google-maps" = "Google Maps";
+"apple-maps" = "Apple Maps";
+
+// MARK: Alerts
+
+// MARK: - No api key found
+"no-api-key-title" = "Geen API sleutel";
+"no-api-key-message" = "Er was geen API sleutel gevonden, probeer het later nog een keer. Excuses voor het ongemak.";
+
+// MARK: - No restuarants found
+"no-restaurants-title" = "Geen restaurants gevonden";
+"no-restaurants-message" = "Er zijn geen restaurants gevonden bij je in de buurt, probeer het later nog een keer.";
+
+// MARK: - No internet connection
+"no-internet-title" = "Geen internetverbinding";
+"no-internet-message" = "We konden geen restaurants voor je vinden, check je internetverbinding en probeer het nog een keer.";
+
+// MARK: - No location
+"no-location-title" = "Geen locatie";
+"no-location-message" = "Vul alsjeblieft ook uw locatie in, dit kan je postcode of stad zijn.";
