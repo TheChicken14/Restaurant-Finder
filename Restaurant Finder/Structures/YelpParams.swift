@@ -8,7 +8,7 @@
 import Foundation
 
 struct YelpParams: Encodable {
-    let location: String
-    let categories: String
-    let term: String? = nil
+    var location: String
+    var categories: String
+    var term: String? = nil
 }
