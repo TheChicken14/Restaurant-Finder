@@ -30,35 +30,35 @@ struct HomeScreen: View {
         ZStack {
             LinearGradient(gradient: Gradient(colors:[.blue, .white]), startPoint: .topLeading, endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
             VStack {
-                Text("Restaurant finder!")
+                Text("app-name")
                     .font(.system(size: 32, weight: .bold, design: .rounded)).padding()
                 
                 HStack {
-                    Label("Location", systemImage: "location").font(Font.body.bold())
+                    Label("location", systemImage: "location").font(Font.body.bold())
                     
                     Spacer()
                     
-                    TextField("Location", text: $locationInputText).focused($locInputFocused).multilineTextAlignment(.trailing).disabled(loading).onAppear(perform: {
+                    TextField("location", text: $locationInputText).focused($locInputFocused).multilineTextAlignment(.trailing).disabled(loading).onAppear(perform: {
                         if let locationString = UserDefaults.standard.string(forKey: "location") {
                             locationInputText = locationString
                         }
                     })
                 }.padding(.bottom).frame(width: 280, height: 50)
                 
-                Text("Search type").bold().frame(maxWidth: 280, alignment: .leading)
+                Text("search-type").bold().frame(maxWidth: 280, alignment: .leading)
                 
-                Picker("Search type", selection: $searchType) {
-                    Text("Random").tag(SearchParam.random)
-                    Text("With search term").tag(SearchParam.withSearchTerm)
+                Picker("search-type", selection: $searchType) {
+                    Text("random").tag(SearchParam.random)
+                    Text("with-search-term").tag(SearchParam.withSearchTerm)
                 }.padding(.bottom).pickerStyle(SegmentedPickerStyle()).frame(width: 280)
                 
                 if searchType == .withSearchTerm {
                     HStack {
-                        Label("Search term", systemImage: "magnifyingglass").font(Font.body.bold())
+                        Label("search-term", systemImage: "magnifyingglass").font(Font.body.bold())
                         
                         Spacer()
                         
-                        TextField("Search term", text: $searchTerm).multilineTextAlignment(.trailing)
+                        TextField("search-term", text: $searchTerm).multilineTextAlignment(.trailing)
                     }.frame(width: 280, height: 50)
 
                 }
@@ -69,7 +69,7 @@ struct HomeScreen: View {
                             ProgressView()
                                 .progressViewStyle(CircularProgressViewStyle(tint: Color(.gray)))
                         } else {
-                            Label("Find restaurant", systemImage: "magnifyingglass")
+                            Label("find-restaurants", systemImage: "magnifyingglass")
                         }
                     }
                     .frame(width: 280, height: 50)
@@ -79,26 +79,26 @@ struct HomeScreen: View {
                 }
                 .alert(isPresented: $noApiKeyAlertShown) {
                     Alert(
-                        title: Text("No API key"),
-                        message: Text("No API key was found! Sorry for the inconvenience."),
-                        dismissButton: .default(Text("Got it!"))
+                        title: Text("no-api-key-title"),
+                        message: Text("no-api-key-message"),
+                        dismissButton: .default(Text("ok"))
                     )
                 }
                 .alert(isPresented: $noRestaurantsFoundShown) {
                     Alert(
-                        title: Text("No restaurants found"),
-                        message: Text("There were no restaurants find in your area. Please try again later."),
-                        dismissButton: .default(Text("OK"))
+                        title: Text("no-restaurants-title"),
+                        message: Text("no-restaurants-message"),
+                        dismissButton: .default(Text("ok"))
                     )
                 }
                 .alert(isPresented: $networkErrorAlertShown) {
                     Alert(
-                        title: Text("No internet connection"),
-                        message: Text("We failed to find a restaurant for you, please check your internet connection and try again later."),
-                        dismissButton: .default(Text("OK"))
+                        title: Text("no-internet-title"),
+                        message: Text("no-internet-message"),
+                        dismissButton: .default(Text("ok"))
                     )
                 }.alert(isPresented: $noLocationAlertShown) {
-                    Alert(title: Text("No location"), message: Text("Please fill in your location so we can find a restaurant for you."), dismissButton: .default(Text("OK")))
+                    Alert(title: Text("no-location-title"), message: Text("no-location-message"), dismissButton: .default(Text("ok")))
                 }
             }
         }.sheet(isPresented: $restaurantModalShown) {
@@ -143,6 +143,15 @@ struct HomeScreen: View {
         ]
         
         var parameters = YelpParams(location: locationInputText, categories: "restaurants")
+        
+        switch Locale.current.languageCode! {
+        case "nl":
+            parameters.locale = "nl_NL"
+        case "en":
+            parameters.locale = "en_US"
+        default:
+            parameters.locale = "en_US"
+        }
         
         if searchType == .withSearchTerm {
             parameters.term = searchTerm
