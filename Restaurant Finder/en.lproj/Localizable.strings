@@ -24,6 +24,13 @@
 
 "search-term" = "Search term";
 
+"max-range" = "Maximum range";
+"one-km" = "1 km";
+"two-km" = "2 km";
+"three-km" = "3 km";
+"five-km" = "5 km";
+"no-limit" = "No limit";
+
 "find-restaurants" = "Find restaurants";
 
 // MARK: Restaurant details labels & buttons
@@ -59,7 +66,7 @@
 
 // MARK: - No restuarants found
 "no-restaurants-title" = "No restaurants found";
-"no-restaurants-message" = "There were no restaurants find in your area. Please try again later.";
+"no-restaurants-message" = "There were no restaurants find in your area. Please try again with different search options.";
 
 // MARK: - No internet connection
 "no-internet-title" = "No internet connection";

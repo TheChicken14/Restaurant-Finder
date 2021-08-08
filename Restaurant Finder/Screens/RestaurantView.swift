@@ -10,6 +10,7 @@ import MapKit
 import BetterSafariView
 
 struct RestaurantView: View {
+    let reload: () -> Void
 //    @Environment(\.dismiss) var dismiss
     @Environment(\.presentationMode) var presentationMode
     @Binding var restaurant: YelpBusiness?
@@ -31,6 +32,7 @@ struct RestaurantView: View {
                                 placeholder: { ProgressView().frame(width: 250.0, height: 250.0) },
                                 image: { Image(uiImage: $0).resizable() }
                             )
+                                .aspectRatio(contentMode: .fill)
                                 .cornerRadius(16)
                                 .frame(maxHeight: 300.0)
                             
@@ -77,7 +79,7 @@ struct RestaurantView: View {
                             .preferredControlAccentColor(.accentColor)
                             .dismissButtonStyle(.done)
                     }
-                }.navigationTitle(Text(restaurant?.name ?? "Unknown")).navigationBarItems(leading: closeButton())
+                }.navigationTitle(Text(restaurant?.name ?? "Unknown")).navigationBarItems(leading: closeButton(), trailing: reloadButton())
                     .sheet(isPresented: $mapSheetShown) {
                         MapView(latitude: restaurant!.coordinates.latitude, longitude: restaurant!.coordinates.longitude, name: restaurant!.name)
                     }
@@ -105,6 +107,12 @@ struct RestaurantView: View {
         Button("close") {
 //            dismiss()
             presentationMode.wrappedValue.dismiss()
+        }
+    }
+    
+    func reloadButton() -> some View {
+        Button(action: reload) {
+            Label("Retry", systemImage: "arrow.clockwise")
         }
     }
     

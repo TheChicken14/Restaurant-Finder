@@ -13,12 +13,16 @@ struct HomeScreen: View {
     @State var noRestaurantsFoundShown = false
     @State var networkErrorAlertShown = false
     @State var noLocationAlertShown = false
+    @State var activeAlert: HomescreenAlert = .noApiKey
+    @State var alertShown = false
     
     @State var locationInputText = ""
 //    @FocusState private var locInputFocused: Bool
     
     @State var searchType: SearchParam = .random
     @State var searchTerm = ""
+    
+    @State var maxRange: MaxRange = .noLimit
     
     @State var loading = false
     @State var restaurants = [YelpBusiness]()
@@ -44,6 +48,16 @@ struct HomeScreen: View {
                         }
                     })
                 }.padding(.bottom).frame(width: 280, height: 50)
+                
+                Text("max-range").bold().frame(maxWidth: 280, alignment: .leading)
+                
+                Picker("max-range", selection: $maxRange) {
+                    Text("one-km").tag(MaxRange.oneKm)
+                    Text("two-km").tag(MaxRange.twoKm)
+                    Text("three-km").tag(MaxRange.threeKm)
+                    Text("five-km").tag(MaxRange.fiveKm)
+                    Text("no-limit").tag(MaxRange.noLimit)
+                }.pickerStyle(SegmentedPickerStyle()).padding(.bottom).frame(width: 280)
                 
                 Text("search-type").bold().frame(maxWidth: 280, alignment: .leading)
                 
@@ -77,32 +91,46 @@ struct HomeScreen: View {
                     .font(.system(size: 20, weight: .bold, design: .default))
                     .cornerRadius(10)
                 }
-                .alert(isPresented: $noApiKeyAlertShown) {
-                    Alert(
-                        title: Text("no-api-key-title"),
-                        message: Text("no-api-key-message"),
-                        dismissButton: .default(Text("ok"))
-                    )
-                }
-                .alert(isPresented: $noRestaurantsFoundShown) {
-                    Alert(
-                        title: Text("no-restaurants-title"),
-                        message: Text("no-restaurants-message"),
-                        dismissButton: .default(Text("ok"))
-                    )
-                }
-                .alert(isPresented: $networkErrorAlertShown) {
-                    Alert(
-                        title: Text("no-internet-title"),
-                        message: Text("no-internet-message"),
-                        dismissButton: .default(Text("ok"))
-                    )
-                }.alert(isPresented: $noLocationAlertShown) {
-                    Alert(title: Text("no-location-title"), message: Text("no-location-message"), dismissButton: .default(Text("ok")))
+                .alert(isPresented: $alertShown) {
+                    switch activeAlert {
+                    case .noApiKey:
+                        return Alert(
+                            title: Text("no-api-key-title"),
+                            message: Text("no-api-key-message"),
+                            dismissButton: .default(Text("ok"))
+                        )
+                    case .noRestaurantsFound:
+                        return Alert(
+                            title: Text("no-restaurants-title"),
+                            message: Text("no-restaurants-message"),
+                            dismissButton: .default(Text("ok"))
+                        )
+                    case .networkError:
+                        return Alert(
+                            title: Text("no-internet-title"),
+                            message: Text("no-internet-message"),
+                            dismissButton: .default(Text("ok"))
+                        )
+                    case .noLocation:
+                        return Alert(
+                            title: Text("no-location-title"),
+                            message: Text("no-location-message"),
+                            dismissButton: .default(Text("ok"))
+                        )
+                    }
                 }
             }
         }.sheet(isPresented: $restaurantModalShown) {
-            RestaurantView(restaurant: $selectedRestaurant)
+            RestaurantView(reload: reload, restaurant: $selectedRestaurant)
+        }
+    }
+    
+    func reload() {
+        restaurantModalShown = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            let randomRestaurant = restaurants.randomElement()
+            selectedRestaurant = randomRestaurant
+            restaurantModalShown = true
         }
     }
     
@@ -110,13 +138,14 @@ struct HomeScreen: View {
         restaurantModalShown = false
     }
     
-    func buttonTapped() {
-        
+    func showAlert(alert: HomescreenAlert)  {
+        activeAlert = alert
+        alertShown = true
     }
     
     func findRestaurant() {
         if locationInputText.trimmingCharacters(in: .whitespaces).count == 0 {
-            noLocationAlertShown = true
+            showAlert(alert: .noLocation)
             return;
         }
         
@@ -134,7 +163,7 @@ struct HomeScreen: View {
         loading = true
         
         guard let apiKey = Bundle.main.infoDictionary?["YELP_API_KEY"] else {
-            noApiKeyAlertShown = true
+            showAlert(alert: .noApiKey)
             loading = false
             return
         }
@@ -158,6 +187,10 @@ struct HomeScreen: View {
             parameters.term = searchTerm
         }
         
+        if maxRange != .noLimit {
+            parameters.radius = maxRange.rawValue
+        }
+        
         
         AF.request("https://api.yelp.com/v3/businesses/search", parameters: parameters, headers: headers)
             .validate()
@@ -169,14 +202,15 @@ struct HomeScreen: View {
                     
                 case .success(_):
                     if response.value?.total == 0 {
-                        noRestaurantsFoundShown = true
+                        print("no restaurants")
+                        showAlert(alert: .noRestaurantsFound)
                         return;
                     }
                     
                     restaurants = response.value?.businesses ?? []
                     
                     guard let randomRestaurant = response.value?.businesses.randomElement() else {
-                        noRestaurantsFoundShown = true
+                        showAlert(alert: .noRestaurantsFound)
                         return;
                     }
                     
@@ -184,11 +218,11 @@ struct HomeScreen: View {
                     
                     DispatchQueue.main.async {
                         selectedRestaurant = randomRestaurant
-                        restaurantModalShown.toggle()
+                        restaurantModalShown = true
                     }
                     
                 case .failure(_):
-                    networkErrorAlertShown.toggle()
+                    showAlert(alert: .networkError)
                 }
             }
     }

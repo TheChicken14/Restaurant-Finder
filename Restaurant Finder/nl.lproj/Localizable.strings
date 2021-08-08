@@ -24,6 +24,13 @@
 
 "search-term" = "Zoekterm";
 
+"max-range" = "Maximale afstand";
+"one-km" = "1 km";
+"two-km" = "2 km";
+"three-km" = "3 km";
+"five-km" = "5 km";
+"no-limit" = "Geen limiet";
+
 "find-restaurants" = "Vind restaurants";
 
 // MARK: Restaurant details labels & buttons
@@ -59,7 +66,7 @@
 
 // MARK: - No restuarants found
 "no-restaurants-title" = "Geen restaurants gevonden";
-"no-restaurants-message" = "Er zijn geen restaurants gevonden bij je in de buurt, probeer het later nog een keer.";
+"no-restaurants-message" = "Er zijn geen restaurants gevonden bij je in de buurt, probeer het nog een keer met andere zoekopties.";
 
 // MARK: - No internet connection
 "no-internet-title" = "Geen internetverbinding";
