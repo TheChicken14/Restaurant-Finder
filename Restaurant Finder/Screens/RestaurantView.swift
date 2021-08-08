@@ -87,7 +87,7 @@ struct RestaurantView: View {
                         let add = restaurant!.location.address1.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
                         let addString = String(describing: add!)
                         
-                        return ActionSheet(title: Text("directions"), message: Text("wich-app"), buttons: [
+                        return ActionSheet(title: Text("directions"), message: Text("which-app"), buttons: [
                             .default(Text("google-maps"), action: {
                             let url = URL(string: "comgooglemaps://?q=\(addString)&center=\(lat),\(lon)")!
 
