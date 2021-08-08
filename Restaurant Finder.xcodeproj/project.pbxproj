@@ -12,16 +12,20 @@
 		892165B526B74DE8004374A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 892165B426B74DE8004374A1 /* Assets.xcassets */; };
 		892165B826B74DE8004374A1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 892165B726B74DE8004374A1 /* Preview Assets.xcassets */; };
 		892165C426B75163004374A1 /* YelpBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892165C326B75163004374A1 /* YelpBusiness.swift */; };
-		8926703626B7F5F3009B5666 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8926703526B7F5F3009B5666 /* Alamofire */; };
 		8926703826B8172C009B5666 /* YelpParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8926703726B8172C009B5666 /* YelpParams.swift */; };
 		8926703B26B8252D009B5666 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8926703A26B8252D009B5666 /* RestaurantView.swift */; };
 		895A8D6126B7F03D00785B55 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895A8D6026B7F03D00785B55 /* HomeScreen.swift */; };
 		897D8A9C26BF3DC500F1D965 /* Plurals.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 897D8A9E26BF3DC500F1D965 /* Plurals.stringsdict */; };
 		8985BCF226BB52560026E613 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8985BCF126BB52560026E613 /* MapView.swift */; };
+		899C96E926C002AF007A9F8C /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 899C96E826C002AF007A9F8C /* BetterSafariView */; };
+		899C96EC26C002B8007A9F8C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 899C96EB26C002B8007A9F8C /* Alamofire */; };
+		899C96EF26C004F9007A9F8C /* MyAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899C96EE26C004F9007A9F8C /* MyAsyncImage.swift */; };
+		899C96F126C00529007A9F8C /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899C96F026C00529007A9F8C /* ImageCache.swift */; };
+		899C96F326C00544007A9F8C /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899C96F226C00544007A9F8C /* ImageLoader.swift */; };
+		899C96F526C00569007A9F8C /* EnvironmentValues+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899C96F426C00569007A9F8C /* EnvironmentValues+ImageCache.swift */; };
 		89C3397926BF0BAB000EF678 /* SearchParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C3397826BF0BAB000EF678 /* SearchParam.swift */; };
 		89CD57F226BD41E8003ED321 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 89CD57F126BD41E8003ED321 /* .gitignore */; };
 		89CD57F426BD6EFC003ED321 /* YelpRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CD57F326BD6EFC003ED321 /* YelpRating.swift */; };
-		89CD57F926BD7C14003ED321 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 89CD57F826BD7C14003ED321 /* BetterSafariView */; };
 		89DF43F926BF2FAE001ADA23 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89DF43FB26BF2FAE001ADA23 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +44,10 @@
 		897D8A9D26BF3DC500F1D965 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Plurals.stringsdict; sourceTree = "<group>"; };
 		897D8A9F26BF3DC800F1D965 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = nl; path = nl.lproj/Plurals.stringsdict; sourceTree = "<group>"; };
 		8985BCF126BB52560026E613 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		899C96EE26C004F9007A9F8C /* MyAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAsyncImage.swift; sourceTree = "<group>"; };
+		899C96F026C00529007A9F8C /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		899C96F226C00544007A9F8C /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		899C96F426C00569007A9F8C /* EnvironmentValues+ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+ImageCache.swift"; sourceTree = "<group>"; };
 		89C3397826BF0BAB000EF678 /* SearchParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchParam.swift; sourceTree = "<group>"; };
 		89CD57F126BD41E8003ED321 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		89CD57F326BD6EFC003ED321 /* YelpRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpRating.swift; sourceTree = "<group>"; };
@@ -52,8 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8926703626B7F5F3009B5666 /* Alamofire in Frameworks */,
-				89CD57F926BD7C14003ED321 /* BetterSafariView in Frameworks */,
+				899C96E926C002AF007A9F8C /* BetterSafariView in Frameworks */,
+				899C96EC26C002B8007A9F8C /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,12 +131,24 @@
 		892165C226B7514F004374A1 /* Structures */ = {
 			isa = PBXGroup;
 			children = (
+				899C96ED26C004EA007A9F8C /* AsyncImage */,
 				892165C326B75163004374A1 /* YelpBusiness.swift */,
 				8926703726B8172C009B5666 /* YelpParams.swift */,
 				89CD57F326BD6EFC003ED321 /* YelpRating.swift */,
 				89C3397826BF0BAB000EF678 /* SearchParam.swift */,
 			);
 			path = Structures;
+			sourceTree = "<group>";
+		};
+		899C96ED26C004EA007A9F8C /* AsyncImage */ = {
+			isa = PBXGroup;
+			children = (
+				899C96EE26C004F9007A9F8C /* MyAsyncImage.swift */,
+				899C96F026C00529007A9F8C /* ImageCache.swift */,
+				899C96F226C00544007A9F8C /* ImageLoader.swift */,
+				899C96F426C00569007A9F8C /* EnvironmentValues+ImageCache.swift */,
+			);
+			path = AsyncImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,8 +168,8 @@
 			);
 			name = "Restaurant Finder";
 			packageProductDependencies = (
-				8926703526B7F5F3009B5666 /* Alamofire */,
-				89CD57F826BD7C14003ED321 /* BetterSafariView */,
+				899C96E826C002AF007A9F8C /* BetterSafariView */,
+				899C96EB26C002B8007A9F8C /* Alamofire */,
 			);
 			productName = "Restaurant FInder";
 			productReference = 892165AD26B74DE6004374A1 /* Restaurant Finder.app */;
@@ -181,8 +201,8 @@
 			);
 			mainGroup = 892165A426B74DE6004374A1;
 			packageReferences = (
-				8926703426B7F5F3009B5666 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				89CD57F726BD7C14003ED321 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
+				899C96E726C002AE007A9F8C /* XCRemoteSwiftPackageReference "BetterSafariView" */,
+				899C96EA26C002B8007A9F8C /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 892165AE26B74DE6004374A1 /* Products */;
 			projectDirPath = "";
@@ -213,15 +233,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				899C96F126C00529007A9F8C /* ImageCache.swift in Sources */,
 				8985BCF226BB52560026E613 /* MapView.swift in Sources */,
+				899C96F326C00544007A9F8C /* ImageLoader.swift in Sources */,
 				895A8D6126B7F03D00785B55 /* HomeScreen.swift in Sources */,
 				89CD57F426BD6EFC003ED321 /* YelpRating.swift in Sources */,
 				892165C426B75163004374A1 /* YelpBusiness.swift in Sources */,
+				899C96EF26C004F9007A9F8C /* MyAsyncImage.swift in Sources */,
 				8926703826B8172C009B5666 /* YelpParams.swift in Sources */,
 				892165B326B74DE6004374A1 /* ContentView.swift in Sources */,
 				89C3397926BF0BAB000EF678 /* SearchParam.swift in Sources */,
 				892165B126B74DE6004374A1 /* Restaurant_FInderApp.swift in Sources */,
 				8926703B26B8252D009B5666 /* RestaurantView.swift in Sources */,
+				899C96F526C00569007A9F8C /* EnvironmentValues+ImageCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,7 +325,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -357,7 +381,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -387,7 +411,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -421,7 +445,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -459,34 +483,34 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8926703426B7F5F3009B5666 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.0;
-			};
-		};
-		89CD57F726BD7C14003ED321 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
+		899C96E726C002AE007A9F8C /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/stleamist/BetterSafariView.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 2.3.1;
+			};
+		};
+		899C96EA26C002B8007A9F8C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8926703526B7F5F3009B5666 /* Alamofire */ = {
+		899C96E826C002AF007A9F8C /* BetterSafariView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8926703426B7F5F3009B5666 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		89CD57F826BD7C14003ED321 /* BetterSafariView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 89CD57F726BD7C14003ED321 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
+			package = 899C96E726C002AE007A9F8C /* XCRemoteSwiftPackageReference "BetterSafariView" */;
 			productName = BetterSafariView;
+		};
+		899C96EB26C002B8007A9F8C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 899C96EA26C002B8007A9F8C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

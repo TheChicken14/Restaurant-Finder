@@ -15,9 +15,9 @@ struct HomeScreen: View {
     @State var noLocationAlertShown = false
     
     @State var locationInputText = ""
-    @FocusState private var locInputFocused: Bool
+//    @FocusState private var locInputFocused: Bool
     
-    @State var searchType: SearchParam = .withSearchTerm
+    @State var searchType: SearchParam = .random
     @State var searchTerm = ""
     
     @State var loading = false
@@ -38,7 +38,7 @@ struct HomeScreen: View {
                     
                     Spacer()
                     
-                    TextField("location", text: $locationInputText).focused($locInputFocused).multilineTextAlignment(.trailing).disabled(loading).onAppear(perform: {
+                    TextField("location", text: $locationInputText).multilineTextAlignment(.trailing).disabled(loading).onAppear(perform: {
                         if let locationString = UserDefaults.standard.string(forKey: "location") {
                             locationInputText = locationString
                         }
@@ -124,7 +124,8 @@ struct HomeScreen: View {
             return;
         }
         UserDefaults.standard.set(locationInputText, forKey: "location")
-        locInputFocused = false
+        hideKeyboard()
+//        locInputFocused = false
         
         let impact = UIImpactFeedbackGenerator(style: .heavy)
         impact.impactOccurred()
@@ -192,6 +193,14 @@ struct HomeScreen: View {
             }
     }
 }
+
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif
 
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {

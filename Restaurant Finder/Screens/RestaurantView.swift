@@ -10,7 +10,8 @@ import MapKit
 import BetterSafariView
 
 struct RestaurantView: View {
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
     @Binding var restaurant: YelpBusiness?
     
     @State var mapSheetShown = false
@@ -24,17 +25,16 @@ struct RestaurantView: View {
                     if restaurant?.imageURL != nil && restaurant?.imageURL.count != 0 {
                         HStack {
                             Spacer()
-                            AsyncImage(url: URL(string: restaurant!.imageURL)) { image in
-                                image
-                                    .resizable()
-                                    .scaledToFill()
-                                //                                    .aspectRatio(contentMode: .fit)
-                                    .cornerRadius(16)
-                                //                                    .frame(maxWidth: 250.0, maxHeight: 250.0)
-                            } placeholder: {
-                                ProgressView()
-                                    .frame(width: 250.0, height: 250.0)
-                            }
+                            
+                            AsyncImage(
+                                url: URL(string: restaurant!.imageURL)!,
+                                placeholder: { ProgressView().frame(width: 250.0, height: 250.0) },
+                                image: { Image(uiImage: $0).resizable() }
+                            )
+                                .cornerRadius(16)
+                                .frame(maxHeight: 300.0)
+                            
+                            
                             Spacer()
                         }
                     }
@@ -103,7 +103,8 @@ struct RestaurantView: View {
     
     func closeButton() -> some View {
         Button("close") {
-            dismiss()
+//            dismiss()
+            presentationMode.wrappedValue.dismiss()
         }
     }
     

@@ -18,7 +18,7 @@ struct City: Identifiable {
 }
 
 struct MapView: View {
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
     
     let latitude: Double
     let longitude: Double
@@ -46,7 +46,7 @@ struct MapView: View {
     
     func closeButton() -> some View {
         Button("Close") {
-            dismiss()
+//            dismiss()
         }
     }
 }
