@@ -44,6 +44,8 @@
 "review" = "review";
 "reviews" = "reviews";
 
+"address" = "Adres";
+
 //"review-count %lld" = "From %lld review";
 
 "get-directions" = "Routebeschrijving opvragen";

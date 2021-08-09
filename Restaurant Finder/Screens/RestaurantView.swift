@@ -64,6 +64,16 @@ struct RestaurantView: View {
                         
                     }
                     
+                    HStack {
+                        Text("address")
+                        Spacer()
+                        VStack {
+                            ForEach(restaurant!.location.displayAddress, id: \.self) { add in
+                                Text(add)
+                            }
+                        }
+                    }
+                    
 //                    Button("Show map") {
 //                        mapSheetShown.toggle()
 //                    }
