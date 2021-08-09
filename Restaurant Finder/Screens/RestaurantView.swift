@@ -86,7 +86,8 @@ struct RestaurantView: View {
                     .actionSheet(isPresented: $directionSheetShown) {
                         let lat = restaurant!.coordinates.latitude
                         let lon = restaurant!.coordinates.longitude
-                        let add = restaurant!.location.address1.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+//                        let add = restaurant!.location.address1.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                        let add = restaurant!.location.displayAddress.joined(separator: ", ").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
                         let addString = String(describing: add!)
                         
                         return ActionSheet(title: Text("directions"), message: Text("which-app"), buttons: [
