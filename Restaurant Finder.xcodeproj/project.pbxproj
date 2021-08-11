@@ -28,6 +28,7 @@
 		89C3397926BF0BAB000EF678 /* SearchParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C3397826BF0BAB000EF678 /* SearchParam.swift */; };
 		89CD57F226BD41E8003ED321 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 89CD57F126BD41E8003ED321 /* .gitignore */; };
 		89CD57F426BD6EFC003ED321 /* YelpRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CD57F326BD6EFC003ED321 /* YelpRating.swift */; };
+		89D99D7326C4091A00247171 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D99D7226C4091A00247171 /* HomeScreenViewModel.swift */; };
 		89DF43F926BF2FAE001ADA23 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89DF43FB26BF2FAE001ADA23 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		89C3397826BF0BAB000EF678 /* SearchParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchParam.swift; sourceTree = "<group>"; };
 		89CD57F126BD41E8003ED321 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		89CD57F326BD6EFC003ED321 /* YelpRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpRating.swift; sourceTree = "<group>"; };
+		89D99D7226C4091A00247171 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		89DF43FA26BF2FAE001ADA23 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		89DF43FC26BF2FB1001ADA23 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,7 +127,7 @@
 		892165C126B75145004374A1 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				895A8D6026B7F03D00785B55 /* HomeScreen.swift */,
+				89D99D7126C4090800247171 /* HomeScreenView */,
 				8926703A26B8252D009B5666 /* RestaurantView.swift */,
 				8985BCF126BB52560026E613 /* MapView.swift */,
 			);
@@ -155,6 +157,15 @@
 				899C96F426C00569007A9F8C /* EnvironmentValues+ImageCache.swift */,
 			);
 			path = AsyncImage;
+			sourceTree = "<group>";
+		};
+		89D99D7126C4090800247171 /* HomeScreenView */ = {
+			isa = PBXGroup;
+			children = (
+				895A8D6026B7F03D00785B55 /* HomeScreen.swift */,
+				89D99D7226C4091A00247171 /* HomeScreenViewModel.swift */,
+			);
+			path = HomeScreenView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +259,7 @@
 				892165C426B75163004374A1 /* YelpBusiness.swift in Sources */,
 				899C96EF26C004F9007A9F8C /* MyAsyncImage.swift in Sources */,
 				8926703826B8172C009B5666 /* YelpParams.swift in Sources */,
+				89D99D7326C4091A00247171 /* HomeScreenViewModel.swift in Sources */,
 				892165B326B74DE6004374A1 /* ContentView.swift in Sources */,
 				89C3397926BF0BAB000EF678 /* SearchParam.swift in Sources */,
 				892165B126B74DE6004374A1 /* Restaurant_FInderApp.swift in Sources */,
